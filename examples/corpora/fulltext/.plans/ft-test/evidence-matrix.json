@@ -1,0 +1,96 @@
+{
+  "slug": "ft-test",
+  "generatedAt": "2026-04-20T20:25:38.128Z",
+  "version": "v5.8.1",
+  "stats": {
+    "totalSources": 2,
+    "byType": {
+      "bib": {
+        "count": 2,
+        "scoreSum": 196,
+        "fulltext": 2
+      }
+    },
+    "conflictCount": 0,
+    "avgScore": "98.0"
+  },
+  "sources": {
+    "full2023qa": {
+      "key": "full2023qa",
+      "title": "Quality Assurance for Academic Claims",
+      "authors": [
+        "Santos, Lina",
+        "Meyer, Otto"
+      ],
+      "year": 2023,
+      "type": "bib",
+      "doi": null,
+      "score": 99,
+      "citable": true,
+      "hasFulltext": true,
+      "elements": {
+        "objectives": [
+          "## Goal This work aims to reduce citation errors in long-form manuscripts"
+        ],
+        "methods": [
+          "controlled experiments with participants=220 and three review rounds",
+          "a verification framework to inspect citations and found improved precision"
+        ],
+        "results": [
+          "Findings demonstrate improved citation correctness and lower hallucinated refere",
+          "show effective reduction of unsupported claims",
+          "improved citation correctness and lower hallucinated references",
+          "improved precision"
+        ],
+        "conclusions": [],
+        "sampleSize": 220,
+        "bias": [],
+        "limitations": [
+          ", domain-specific terminology remains challenging"
+        ]
+      }
+    },
+    "full2024evidence": {
+      "key": "full2024evidence",
+      "title": "Evidence-Centric Synthesis in Scientific Writing",
+      "authors": [
+        "Martin, Claire",
+        "Dubois, Karim"
+      ],
+      "year": 2024,
+      "type": "bib",
+      "doi": "10.1000/jrw.2024.15",
+      "score": 97,
+      "citable": true,
+      "hasFulltext": true,
+      "elements": {
+        "objectives": [
+          "The objective of this study is to design a robust synthesis pipeline for literature-backed writing"
+        ],
+        "methods": [
+          "We employed a mixed-method protocol with n=640 documents across three domains",
+          "is effective for claim-grounded drafting",
+          "a comparative design and observed significant gains in consistency"
+        ],
+        "results": [
+          "Results show a significant increase in coherence and a decrease in unsupported s",
+          "a significant increase in coherence and a decrease in unsupported statements"
+        ],
+        "conclusions": [
+          "In conclusion, the approach is effective for claim-grounded drafting"
+        ],
+        "sampleSize": 640,
+        "bias": [
+          "bias toward English-only corpora",
+          "Limitations A limitation is the language bias toward English-only corp",
+          "limitations remain in multilingual transfer"
+        ],
+        "limitations": [
+          "s A limitation is the language bias toward English-only corpora",
+          ", limitations remain in multilingual transfer"
+        ]
+      }
+    }
+  },
+  "conflicts": []
+}

@@ -1,0 +1,39 @@
+{
+  "abs2022mapping": {
+    "type": "bib",
+    "bibtex_key": "abs2022mapping",
+    "bib_source_file": "abstracts.bib",
+    "title": "Mapping Evidence in Rapid Reviews",
+    "authors": [
+      "Perez, Anna",
+      "Kline, Robert"
+    ],
+    "year": 2022,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Review Methods",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "We present a rapid review mapping technique. The method improves traceability but is limited by sparse metadata in older sources.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  },
+  "abs2021claims": {
+    "type": "bib",
+    "bibtex_key": "abs2021claims",
+    "bib_source_file": "abstracts.bib",
+    "title": "Claim Structuring for Scientific Narratives",
+    "authors": [
+      "Noor, Samir"
+    ],
+    "year": 2021,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Proceedings of Text Science",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "This paper proposes claim templates for literature synthesis. Results indicate better alignment between claims and evidence, although external validity is limited.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  }
+}

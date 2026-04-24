@@ -1,0 +1,56 @@
+{
+  "mix2025conflictA": {
+    "type": "bib",
+    "bibtex_key": "mix2025conflictA",
+    "bib_source_file": "mixed.bib",
+    "title": "Intervention X Improves Outcome Y",
+    "authors": [
+      "Green, Mila"
+    ],
+    "year": 2025,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Clinical Signals",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "The study found significant improvement in outcome Y with intervention X. Results show positive effects and effective response across cohorts.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  },
+  "mix2025conflictB": {
+    "type": "bib",
+    "bibtex_key": "mix2025conflictB",
+    "bib_source_file": "mixed.bib",
+    "title": "Intervention X Shows Negative Outcome Y Effects",
+    "authors": [
+      "Brown, Ilias"
+    ],
+    "year": 2025,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Clinical Signals",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "Our analysis found a decrease in outcome Y and negative effects in vulnerable groups. The intervention appears ineffective in this context.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  },
+  "mix2024method": {
+    "type": "bib",
+    "bibtex_key": "mix2024method",
+    "bib_source_file": "mixed.bib",
+    "title": "Methodological Notes on Confounding in Cohort Studies",
+    "authors": [
+      "Lopez, Mina"
+    ],
+    "year": 2024,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Methods Today",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "We discuss confound management and sampling caveats. However, small sample groups may bias the estimates.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  }
+}

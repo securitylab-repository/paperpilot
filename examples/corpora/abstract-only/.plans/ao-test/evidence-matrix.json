@@ -1,0 +1,73 @@
+{
+  "slug": "ao-test",
+  "generatedAt": "2026-04-20T20:25:42.249Z",
+  "version": "v5.8.1",
+  "stats": {
+    "totalSources": 2,
+    "byType": {
+      "bib": {
+        "count": 2,
+        "scoreSum": 148,
+        "fulltext": 0
+      }
+    },
+    "conflictCount": 0,
+    "avgScore": "74.0"
+  },
+  "sources": {
+    "abs2022mapping": {
+      "key": "abs2022mapping",
+      "title": "Mapping Evidence in Rapid Reviews",
+      "authors": [
+        "Perez, Anna",
+        "Kline, Robert"
+      ],
+      "year": 2022,
+      "type": "bib",
+      "doi": null,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false,
+      "elements": {
+        "objectives": [],
+        "methods": [
+          "improves traceability but is limited by sparse metadata in older sources"
+        ],
+        "results": [],
+        "conclusions": [],
+        "sampleSize": null,
+        "bias": [],
+        "limitations": []
+      }
+    },
+    "abs2021claims": {
+      "key": "abs2021claims",
+      "title": "Claim Structuring for Scientific Narratives",
+      "authors": [
+        "Noor, Samir"
+      ],
+      "year": 2021,
+      "type": "bib",
+      "doi": null,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false,
+      "elements": {
+        "objectives": [
+          "templates for literature synthesis"
+        ],
+        "methods": [],
+        "results": [
+          "indicate better alignment between claims and evidence, although external validit"
+        ],
+        "conclusions": [],
+        "sampleSize": null,
+        "bias": [],
+        "limitations": [
+          "external validity is limited"
+        ]
+      }
+    }
+  },
+  "conflicts": []
+}

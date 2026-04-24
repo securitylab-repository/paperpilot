@@ -1,0 +1,255 @@
+{
+  "slug": "pipeline-test",
+  "generatedAt": "2026-04-20T21:36:34.923Z",
+  "version": "v5.9.1",
+  "mode": "heuristic",
+  "llm": null,
+  "stats": {
+    "totalSections": 5,
+    "totalClaims": 19,
+    "sourcesUsed": 3,
+    "totalSources": 3,
+    "conflictsEmbedded": 1
+  },
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "level": 1,
+      "claims": [
+        {
+          "text": "The purpose is to document practical controls for confounding in observational studies",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "ing in Cohort Studies ## Purpose The purpose is to document practical controls f",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "Confounding in Cohort Studies ## Purpose The purpose is to document p",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "objective",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "methodologie",
+      "title": "Méthodologie",
+      "level": 1,
+      "claims": [
+        {
+          "text": "We used propensity matching with N = 180 and sensitivity analysis",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "found a decrease in outcome Y and negative effects in vulnerable groups",
+          "sources": [
+            "mix2025conflictB"
+          ],
+          "type": "method",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "resultats",
+      "title": "Résultats",
+      "level": 1,
+      "claims": [
+        {
+          "text": "Results demonstrate safer estimates and improved robustness after adjustment",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "ing in Cohort Studies ## Purpose The purpose is to document practical controls f",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "management and sampling caveats",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "show positive effects and effective response across cohorts",
+          "sources": [
+            "mix2025conflictA"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "significant improvement in outcome Y with intervention X",
+          "sources": [
+            "mix2025conflictA"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "a decrease in outcome Y and negative effects in vulnerable groups",
+          "sources": [
+            "mix2025conflictB"
+          ],
+          "type": "finding",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "discussion",
+      "title": "Discussion",
+      "level": 1,
+      "claims": [
+        {
+          "text": "Conflit détecté entre \"positive\" (mix2025conflictA) et \"negative\" (mix2025conflictB)",
+          "sources": [
+            "mix2025conflictA",
+            "mix2025conflictB"
+          ],
+          "type": "conflict",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "limites",
+      "title": "Limites & Biais",
+      "level": 1,
+      "claims": [
+        {
+          "text": ", small sample groups may bias the estimates",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "management and sampling caveats",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "confound management and sampling caveats",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "bias in subgroup recruitment",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "bias the estimates",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "Confounding in Cohort Studies ## Purpose The purpose is to document p",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "confounding in observational studies",
+          "sources": [
+            "mix2024method"
+          ],
+          "type": "limitation",
+          "level": 2
+        }
+      ]
+    }
+  ],
+  "synthesis": {
+    "consensus": [],
+    "contradictions": [],
+    "gaps": []
+  },
+  "conflicts": [
+    {
+      "type": "antonym",
+      "term1": "positive",
+      "term2": "negative",
+      "sources1": [
+        "mix2025conflictA"
+      ],
+      "sources2": [
+        "mix2025conflictB"
+      ],
+      "severity": "medium"
+    }
+  ],
+  "sourceIndex": {
+    "mix2024method": {
+      "title": "Methodological Notes on Confounding in Cohort Studies",
+      "authors": [
+        "Lopez, Mina"
+      ],
+      "year": 2024,
+      "score": 99,
+      "citable": true,
+      "hasFulltext": true
+    },
+    "mix2025conflictA": {
+      "title": "Intervention X Improves Outcome Y",
+      "authors": [
+        "Green, Mila"
+      ],
+      "year": 2025,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false
+    },
+    "mix2025conflictB": {
+      "title": "Intervention X Shows Negative Outcome Y Effects",
+      "authors": [
+        "Brown, Ilias"
+      ],
+      "year": 2025,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false
+    }
+  }
+}

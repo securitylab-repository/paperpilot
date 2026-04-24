@@ -1,0 +1,127 @@
+{
+  "slug": "hybrid-check2",
+  "generatedAt": "2026-04-20T20:58:46.905Z",
+  "version": "v5.9.1",
+  "mode": "heuristic",
+  "llm": null,
+  "stats": {
+    "totalSources": 3,
+    "byType": {
+      "bib": {
+        "count": 3,
+        "scoreSum": 247,
+        "fulltext": 1
+      }
+    },
+    "conflictCount": 1,
+    "avgScore": "82.3"
+  },
+  "sources": {
+    "mix2024method": {
+      "key": "mix2024method",
+      "title": "Methodological Notes on Confounding in Cohort Studies",
+      "authors": [
+        "Lopez, Mina"
+      ],
+      "year": 2024,
+      "type": "bib",
+      "doi": null,
+      "score": 99,
+      "llmRelevance": null,
+      "citable": true,
+      "hasFulltext": true,
+      "elements": {
+        "objectives": [
+          "The purpose is to document practical controls for confounding in observational studies"
+        ],
+        "methods": [
+          "We used propensity matching with N = 180 and sensitivity analysis"
+        ],
+        "results": [
+          "Results demonstrate safer estimates and improved robustness after adjustment",
+          "ing in Cohort Studies ## Purpose The purpose is to document practical controls f",
+          "management and sampling caveats"
+        ],
+        "conclusions": [],
+        "sampleSize": 180,
+        "bias": [
+          "bias in subgroup recruitment",
+          "bias the estimates",
+          "Confounding in Cohort Studies ## Purpose The purpose is to document p",
+          "confounding in observational studies",
+          "confound management and sampling caveats"
+        ],
+        "limitations": [
+          ", small sample groups may bias the estimates"
+        ]
+      }
+    },
+    "mix2025conflictA": {
+      "key": "mix2025conflictA",
+      "title": "Intervention X Improves Outcome Y",
+      "authors": [
+        "Green, Mila"
+      ],
+      "year": 2025,
+      "type": "bib",
+      "doi": null,
+      "score": 74,
+      "llmRelevance": null,
+      "citable": true,
+      "hasFulltext": false,
+      "elements": {
+        "objectives": [],
+        "methods": [],
+        "results": [
+          "show positive effects and effective response across cohorts",
+          "significant improvement in outcome Y with intervention X"
+        ],
+        "conclusions": [],
+        "sampleSize": null,
+        "bias": [],
+        "limitations": []
+      }
+    },
+    "mix2025conflictB": {
+      "key": "mix2025conflictB",
+      "title": "Intervention X Shows Negative Outcome Y Effects",
+      "authors": [
+        "Brown, Ilias"
+      ],
+      "year": 2025,
+      "type": "bib",
+      "doi": null,
+      "score": 74,
+      "llmRelevance": null,
+      "citable": true,
+      "hasFulltext": false,
+      "elements": {
+        "objectives": [],
+        "methods": [
+          "found a decrease in outcome Y and negative effects in vulnerable groups"
+        ],
+        "results": [
+          "a decrease in outcome Y and negative effects in vulnerable groups"
+        ],
+        "conclusions": [],
+        "sampleSize": null,
+        "bias": [],
+        "limitations": []
+      }
+    }
+  },
+  "conflicts": [
+    {
+      "type": "antonym",
+      "term1": "positive",
+      "term2": "negative",
+      "sources1": [
+        "mix2025conflictA"
+      ],
+      "sources2": [
+        "mix2025conflictB"
+      ],
+      "severity": "medium"
+    }
+  ]
+}

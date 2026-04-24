@@ -1,0 +1,12 @@
+# Claude-specific files (private, not for remote)
+.claude/
+CLAUDE.md
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

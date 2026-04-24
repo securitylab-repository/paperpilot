@@ -1,0 +1,29 @@
+{
+  "project": {
+    "title": "",
+    "type": "",
+    "domain": "",
+    "target_audience": "",
+    "language": "en",
+    "citation_style": "APA",
+    "methodology": "",
+    "authors": [
+      { "name": "Anonymous", "affiliation": "Unknown Institution", "email": "anon@example.com" }
+    ]
+  },
+  "methodology_options": {
+    "_comment": "Valeurs valides pour project.methodology. Voir .github/instructions/literature-review-methodology.instructions.md",
+    "slr": "Systematic Literature Review (Kitchenham) — survey académique rigoureux",
+    "sms": "Systematic Mapping Study (Petersen) — cartographie d'un champ",
+    "mlr": "Multivocal Literature Review (Garousi) — inclut grey literature",
+    "sok": "Systematization of Knowledge — publication sécurité (S&P, USENIX)",
+    "rapid": "Rapid Review (Cartaxo) — compromis rigueur/vitesse",
+    "narrative": "Revue narrative — état de l'art informel"
+  },
+  "workflow": {
+    "auto_search_papers": true,
+    "max_papers_to_find": 20,
+    "interactive_questions": true,
+    "parallel_soa_agents": 3
+  }
+}

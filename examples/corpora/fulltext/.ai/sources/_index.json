@@ -1,0 +1,40 @@
+{
+  "full2024evidence": {
+    "type": "bib",
+    "bibtex_key": "full2024evidence",
+    "bib_source_file": "fulltext.bib",
+    "title": "Evidence-Centric Synthesis in Scientific Writing",
+    "authors": [
+      "Martin, Claire",
+      "Dubois, Karim"
+    ],
+    "year": 2024,
+    "doi": "10.1000/jrw.2024.15",
+    "arxiv_id": null,
+    "journal": "Journal of Research Workflows",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "This study presents a structured pipeline for synthesis. We employed a comparative design and observed significant gains in consistency. However, limitations remain in multilingual transfer.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  },
+  "full2023qa": {
+    "type": "bib",
+    "bibtex_key": "full2023qa",
+    "bib_source_file": "fulltext.bib",
+    "title": "Quality Assurance for Academic Claims",
+    "authors": [
+      "Santos, Lina",
+      "Meyer, Otto"
+    ],
+    "year": 2023,
+    "doi": null,
+    "arxiv_id": null,
+    "journal": "Scholarly Systems",
+    "has_fulltext": false,
+    "citable": true,
+    "abstract": "We used a verification framework to inspect citations and found improved precision. Results show effective reduction of unsupported claims.",
+    "abstract_source": "bib",
+    "abstract_lang": "en"
+  }
+}

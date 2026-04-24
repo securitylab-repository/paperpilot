@@ -1,0 +1,266 @@
+{
+  "slug": "ft-test",
+  "generatedAt": "2026-04-20T20:25:38.181Z",
+  "version": "v5.9.0",
+  "stats": {
+    "totalSections": 5,
+    "totalClaims": 24,
+    "sourcesUsed": 2,
+    "totalSources": 2,
+    "conflictsEmbedded": 0
+  },
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "level": 1,
+      "claims": [
+        {
+          "text": "## Goal This work aims to reduce citation errors in long-form manuscripts",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "The objective of this study is to design a robust synthesis pipeline for literature-backed writing",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "show effective reduction of unsupported claims",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "is effective for claim-grounded drafting",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "In conclusion, the approach is effective for claim-grounded drafting",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "objective",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "methodologie",
+      "title": "Méthodologie",
+      "level": 1,
+      "claims": [
+        {
+          "text": "controlled experiments with participants=220 and three review rounds",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "a verification framework to inspect citations and found improved precision",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "We employed a mixed-method protocol with n=640 documents across three domains",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "is effective for claim-grounded drafting",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "a comparative design and observed significant gains in consistency",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "method",
+          "level": 2
+        },
+        {
+          "text": "In conclusion, the approach is effective for claim-grounded drafting",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "method",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "resultats",
+      "title": "Résultats",
+      "level": 1,
+      "claims": [
+        {
+          "text": "Findings demonstrate improved citation correctness and lower hallucinated refere",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "show effective reduction of unsupported claims",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "improved citation correctness and lower hallucinated references",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "improved precision",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "Results show a significant increase in coherence and a decrease in unsupported s",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "finding",
+          "level": 2
+        },
+        {
+          "text": "a significant increase in coherence and a decrease in unsupported statements",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "finding",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "discussion",
+      "title": "Discussion",
+      "level": 1,
+      "claims": [
+        {
+          "text": "In conclusion, the approach is effective for claim-grounded drafting",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "conclusion",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "limites",
+      "title": "Limites & Biais",
+      "level": 1,
+      "claims": [
+        {
+          "text": ", domain-specific terminology remains challenging",
+          "sources": [
+            "full2023qa"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "s A limitation is the language bias toward English-only corpora",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": ", limitations remain in multilingual transfer",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "Limitations A limitation is the language bias toward English-only corp",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "limitations remain in multilingual transfer",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "bias toward English-only corpora",
+          "sources": [
+            "full2024evidence"
+          ],
+          "type": "limitation",
+          "level": 2
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "sourceIndex": {
+    "full2023qa": {
+      "title": "Quality Assurance for Academic Claims",
+      "authors": [
+        "Santos, Lina",
+        "Meyer, Otto"
+      ],
+      "year": 2023,
+      "score": 99,
+      "citable": true,
+      "hasFulltext": true
+    },
+    "full2024evidence": {
+      "title": "Evidence-Centric Synthesis in Scientific Writing",
+      "authors": [
+        "Martin, Claire",
+        "Dubois, Karim"
+      ],
+      "year": 2024,
+      "score": 97,
+      "citable": true,
+      "hasFulltext": true
+    }
+  }
+}

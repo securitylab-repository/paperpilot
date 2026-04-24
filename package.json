@@ -1,0 +1,21 @@
+{
+  "name": "papperpilot",
+  "version": "5.8.0",
+  "type": "module",
+  "description": "PapperPilot — copilote de rédaction scientifique et garde-fou anti-context-rot pour VS Code",
+  "bin": {
+    "papperpilot": "./papperpilot.js",
+    "gsdlite": "./gsdlite.js"
+  },
+  "scripts": {
+    "status": "node papperpilot.js status",
+    "unlock": "node papperpilot.js unlock",
+    "collect": "node papperpilot.js collect",
+    "corpus": "node papperpilot.js corpus",
+    "coverage": "node papperpilot.js coverage"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

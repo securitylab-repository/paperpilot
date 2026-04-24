@@ -1,0 +1,128 @@
+{
+  "slug": "ao-test",
+  "generatedAt": "2026-04-20T20:25:42.302Z",
+  "version": "v5.9.0",
+  "stats": {
+    "totalSections": 5,
+    "totalClaims": 7,
+    "sourcesUsed": 2,
+    "totalSources": 2,
+    "conflictsEmbedded": 0
+  },
+  "sections": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "level": 1,
+      "claims": [
+        {
+          "text": "templates for literature synthesis",
+          "sources": [
+            "abs2021claims"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "improves traceability but is limited by sparse metadata in older sources",
+          "sources": [
+            "abs2022mapping"
+          ],
+          "type": "objective",
+          "level": 2
+        },
+        {
+          "text": "indicate better alignment between claims and evidence, although external validit",
+          "sources": [
+            "abs2021claims"
+          ],
+          "type": "objective",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "methodologie",
+      "title": "Méthodologie",
+      "level": 1,
+      "claims": [
+        {
+          "text": "improves traceability but is limited by sparse metadata in older sources",
+          "sources": [
+            "abs2022mapping"
+          ],
+          "type": "method",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "resultats",
+      "title": "Résultats",
+      "level": 1,
+      "claims": [
+        {
+          "text": "indicate better alignment between claims and evidence, although external validit",
+          "sources": [
+            "abs2021claims"
+          ],
+          "type": "finding",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "discussion",
+      "title": "Discussion",
+      "level": 1,
+      "claims": []
+    },
+    {
+      "id": "limites",
+      "title": "Limites & Biais",
+      "level": 1,
+      "claims": [
+        {
+          "text": "external validity is limited",
+          "sources": [
+            "abs2021claims"
+          ],
+          "type": "limitation",
+          "level": 2
+        },
+        {
+          "text": "improves traceability but is limited by sparse metadata in older sources",
+          "sources": [
+            "abs2022mapping"
+          ],
+          "type": "limitation",
+          "level": 2
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "sourceIndex": {
+    "abs2022mapping": {
+      "title": "Mapping Evidence in Rapid Reviews",
+      "authors": [
+        "Perez, Anna",
+        "Kline, Robert"
+      ],
+      "year": 2022,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false
+    },
+    "abs2021claims": {
+      "title": "Claim Structuring for Scientific Narratives",
+      "authors": [
+        "Noor, Samir"
+      ],
+      "year": 2021,
+      "score": 74,
+      "citable": true,
+      "hasFulltext": false
+    }
+  }
+}
