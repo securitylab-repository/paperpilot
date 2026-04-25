@@ -39,12 +39,17 @@ Linux / Windows : équivalents via `apt`, `scoop`, etc. (cf. section Troubleshoo
 # 1. Cloner ou télécharger PapperPilot
 git clone <url> papperpilot && cd papperpilot
 
-# 2. Installer dans ton projet de rédaction cible
+# 2. Installer dans ton projet de rédaction cible (macOS / Linux)
 ./install.sh /chemin/vers/mon-projet
-
-# 3. Ouvrir le projet dans VS Code et recharger la fenêtre
-#    (Cmd+Shift+P → "Developer: Reload Window")
 ```
+
+```powershell
+# 2bis. Installer dans ton projet de rédaction cible (Windows PowerShell)
+powershell -ExecutionPolicy Bypass -File .\install.ps1 C:\chemin\vers\mon-projet
+```
+
+Puis ouvrir le projet dans VS Code et recharger la fenêtre
+(`Cmd+Shift+P` → `Developer: Reload Window`).
 
 Vérifie que Copilot Chat affiche les 6 agents dans le dropdown : **Collector, Analyze, Outline, StateOfArt, Writer, Reviewer**.
 
@@ -186,6 +191,7 @@ mon-projet/
 ├── papperpilot.js                   Entrée CLI
 ├── gsdlite.js                       Runtime Node (~1300 lignes, zéro dépendance)
 ├── install.sh
+├── install.ps1
 │
 ├── .vscode/
 │   └── settings.json                chat.agent.enabled: true

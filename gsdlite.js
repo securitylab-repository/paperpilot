@@ -60,8 +60,10 @@ function countWords(text) {
 // ─────────────────────────────────────────
 
 function hasPdftotext() {
-  try { execSync('pdftotext -v', { stdio: 'ignore' }); return true }
-  catch { return false }
+  try {
+    const checkCmd = process.platform === 'win32' ? 'where pdftotext' : 'command -v pdftotext'
+    execSync(checkCmd, { stdio: 'ignore' }); return true
+  } catch { return false }
 }
 
 function convertPdf(pdfPath) {
@@ -1145,13 +1147,15 @@ function buildFinalBibliography({ silent = false } = {}) {
 }
 
 function commandExists(cmd) {
-  try { execSync(`command -v ${cmd}`, { stdio: 'ignore' }); return true }
-  catch { return false }
+  try {
+    const checkCmd = process.platform === 'win32' ? `where ${cmd}` : `command -v ${cmd}`
+    execSync(checkCmd, { stdio: 'ignore' }); return true
+  } catch { return false }
 }
 
 function hasLatexClass(className) {
   try {
-    const out = execSync(`/Library/TeX/texbin/kpsewhich ${className}.cls`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    const out = execSync(`kpsewhich ${className}.cls`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
     return out.length > 0
   } catch { return false }
 }
@@ -1176,11 +1180,28 @@ async function exportPdf(args) {
 
   // 2. Preflight checks
   if (!commandExists('pandoc')) {
-    err('pandoc introuvable — installe-le : `brew install pandoc`')
+    err('pandoc introuvable — installe-le :')
+    if (process.platform === 'win32') {
+      console.error('   • winget  : winget install JohnMacFarlane.Pandoc')
+      console.error('   • choco   : choco install pandoc')
+      console.error('   • scoop   : scoop install pandoc')
+    } else if (process.platform === 'darwin') {
+      console.error('   • macOS   : brew install pandoc')
+    } else {
+      console.error('   • Ubuntu  : sudo apt install pandoc')
+    }
     process.exit(1)
   }
   if (!commandExists('pdflatex')) {
-    err('pdflatex introuvable — installe BasicTeX : `brew install --cask basictex`')
+    err('pdflatex introuvable — installe une distribution LaTeX :')
+    if (process.platform === 'win32') {
+      console.error('   • MiKTeX  : winget install MiKTeX.MiKTeX  (ou https://miktex.org/download)')
+      console.error('   • TeX Live: https://tug.org/texlive/')
+    } else if (process.platform === 'darwin') {
+      console.error('   • macOS   : brew install --cask basictex')
+    } else {
+      console.error('   • Ubuntu  : sudo apt install texlive-latex-base')
+    }
     process.exit(1)
   }
   if (docClass === 'IEEEtran' && !hasLatexClass('IEEEtran')) {
@@ -1221,8 +1242,8 @@ async function exportPdf(args) {
     '-o', PAPER_PDF,
     '--pdf-engine=pdflatex',
     '--citeproc',
-    '--bibliography=' + PAPER_BIB,
-    '--csl=' + path.relative(process.cwd(), CSL_IEEE),
+    '--bibliography=' + PAPER_BIB.replace(/\\/g, '/'),
+    '--csl=' + path.relative(process.cwd(), CSL_IEEE).replace(/\\/g, '/'),  
     '-V', `documentclass=${docClass}`,
     '-M', `title=${title}`,
     '-V', `author=${authorString}`,
