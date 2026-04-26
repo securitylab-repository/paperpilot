@@ -2,11 +2,9 @@
 .claude/
 CLAUDE.md
 
-# Node
-node_modules/
-
 # macOS
 .DS_Store
+
 
 # Logs
 *.log

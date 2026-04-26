@@ -136,6 +136,11 @@ chmod +x ./gsdlite.js
 echo "📦 papperpilot.js copié (entrée principale)"
 echo "📦 gsdlite.js copié (compatibilité historique)"
 
+# ── Scripts (ieee.csl + templates de reset)
+mkdir -p scripts
+cp -r "$SCRIPT_DIR/scripts/." ./scripts/
+echo "📁 scripts/ copié (ieee.csl, templates de reset)"
+
 # ── Configuration VS Code
 mkdir -p .vscode
 if [ ! -f .vscode/settings.json ]; then

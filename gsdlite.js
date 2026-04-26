@@ -37,6 +37,101 @@ const err  = (msg)        => console.error(`❌  ${msg}`)
 const ok   = (msg)        => console.log(`✅  ${msg}`)
 const PRIMARY_CLI = 'node papperpilot.js'
 
+const TEMPLATES_DIR = path.join(CLI_ROOT, 'scripts', 'templates')
+const PLANNING_DIR  = '.planning'
+
+// List of template files that install.sh seeds in .planning/
+const PLANNING_TEMPLATES = [
+  'config.json',
+  'STATE.md',
+  'PROJECT.md',
+  'corpus/CORPUS_MAP.md',
+  'corpus/SEARCH_QUERIES.md',
+  'analysis/ANALYSIS_MATRIX.md',
+  'analysis/THEMES.md',
+  'outline/OUTLINE.md',
+  'state_of_art/SOA.md',
+  'state_of_art/SOA.bib',
+  'reviews/REVIEW_v1.md',
+]
+
+function clearDir(dir) {
+  if (!fs.existsSync(dir)) return
+  for (const entry of fs.readdirSync(dir)) {
+    fs.rmSync(path.join(dir, entry), { recursive: true, force: true })
+  }
+}
+
+async function resetPipeline(args) {
+  const force = args.includes('--force')
+
+  if (!force) {
+    const { createInterface } = await import('readline')
+    const rl = createInterface({ input: process.stdin, output: process.stdout })
+    const answer = await new Promise(resolve =>
+      rl.question(
+        '⚠️   Ceci va remettre le projet à l\'état post-install :\n' +
+        '    • .planning/  → templates restaurés, artefacts supprimés\n' +
+        '    • .plans/     → artefacts analyze/outline supprimés\n' +
+        '    • output/     → paper.md, paper.pdf, bibliography.bib supprimés\n' +
+        '    • corpus/     → conservé intact\n' +
+        '\n    Continuer ? [y/N] : ',
+        ans => { rl.close(); resolve(ans.trim().toLowerCase()) }
+      )
+    )
+    if (answer !== 'y' && answer !== 'yes') {
+      log('🚫', 'Reset annulé.')
+      return
+    }
+  }
+
+  const tmplDir = path.join(TEMPLATES_DIR, PLANNING_DIR)
+  if (!fs.existsSync(tmplDir)) {
+    err(`Templates introuvables : ${tmplDir}`)
+    err('Relancez install.sh pour régénérer les templates de reset.')
+    process.exit(1)
+  }
+
+  // ── 1. Clear .planning/ pipeline sub-dirs entirely
+  const artifactDirs = ['corpus', 'analysis', 'outline', 'state_of_art', 'drafts', 'reviews']
+  for (const sub of artifactDirs) {
+    clearDir(path.join(PLANNING_DIR, sub))
+    fs.mkdirSync(path.join(PLANNING_DIR, sub), { recursive: true })
+  }
+
+  // ── 2. Restore .planning/ template files from scripts/templates/
+  for (const rel of PLANNING_TEMPLATES) {
+    const src = path.join(tmplDir, rel)
+    const dst = path.join(PLANNING_DIR, rel)
+    if (fs.existsSync(src)) {
+      fs.mkdirSync(path.dirname(dst), { recursive: true })
+      fs.copyFileSync(src, dst)
+    } else {
+      warn(`Template manquant : ${src}`)
+    }
+  }
+
+  // ── 3. Clear .plans/ slugs (keep _locks/)
+  if (fs.existsSync(PLANS_DIR)) {
+    for (const entry of fs.readdirSync(PLANS_DIR)) {
+      if (entry === '_locks') continue
+      fs.rmSync(path.join(PLANS_DIR, entry), { recursive: true, force: true })
+    }
+  }
+
+  // ── 4. Clear output/
+  const outputFiles = [PAPER_MD, PAPER_PDF, PAPER_BIB]
+  for (const f of outputFiles) {
+    if (fs.existsSync(f)) fs.rmSync(f)
+  }
+
+  ok('Projet remis à l\'état post-install.')
+  log('📁', '.planning/  → templates restaurés depuis scripts/templates/')
+  log('📁', '.plans/     → artefacts analyze/outline supprimés')
+  log('📁', 'output/     → paper.md, paper.pdf, bibliography.bib supprimés')
+  log('✔️ ', 'corpus/     → conservé intact')
+}
+
 function ensureDirs() {
   for (const dir of [
     PLANS_DIR, SOURCES_DIR, PDFS_DIR, BIB_DIR, NOTES_DIR,
@@ -1286,6 +1381,9 @@ Usage:
                      [--no-bib]                      'tlmgr install ieeetran'. --no-bib saute l'extraction.
   node papperpilot.js precheck [--hook]              Vérifie l'état du corpus
   node papperpilot.js init                           (Ré)crée les dossiers
+  node papperpilot.js reset [--force]               Remet le projet à l'état post-install
+                                                     (conserve corpus/, supprime artefacts pipeline)
+                                                     --force : pas de confirmation interactive
 
 Pipeline :
   [COLLECT] → [ANALYSE] → [OUTLINE] → [STATE_OF_ART] → [WRITER] → [REVIEWER]
@@ -1341,6 +1439,9 @@ async function main() {
     case 'init':
       ensureDirs()
       ok('Dossiers créés')
+      break
+    case 'reset':
+      await resetPipeline(args)
       break
     default:
       console.log(HELP)

@@ -68,6 +68,7 @@ Ces phases passent directement par l'agent Copilot correspondant.
 | `rpw-write.prompt.md` | Rédiger les sections |
 | `rpw-review.prompt.md` | Lancer la révision |
 | `rpw-status.prompt.md` | Afficher l'état du pipeline |
+| `rpw-reset.prompt.md` | Remettre le projet à l'état post-install |
 
 ## Sources bibliographiques (`corpus/`)
 

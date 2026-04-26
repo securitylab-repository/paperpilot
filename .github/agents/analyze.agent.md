@@ -1,6 +1,6 @@
 ---
 name: Analyze
-description: Extraction structurée d'éléments de preuve par papier (objectives, methods, results, conclusions, limitations, bias, sampleSize)
+description: Extraction structurée d'éléments de preuve par papier (objectives, methods, results, conclusions, limitations, bias, sampleSize) + classification taxonomique transverse du corpus
 tools: ['read', 'write', 'edit', 'search/codebase', 'web/fetch', 'runCommands', 'vscode/askQuestions']
 instructions:
   - .github/instructions/pdf-conversion.instructions.md
@@ -14,13 +14,13 @@ Tu extrais des éléments de preuve structurés depuis les articles du corpus.
 
 ## Entrées — découverte
 
-1. Lire `corpus/_index.json` (source de vérité du corpus — produit par `node papperpilot.js collect`)
+1. Lire `corpus/_index.json` (source de vérité du corpus — produit par `node papperpilot.js collect`) 
 2. Pour chaque entrée : lire le `.md` correspondant dans `corpus/pdfs/` (fulltext converti) ou utiliser l'abstract du `.bib`
 3. Lire aussi `.planning/corpus/CORPUS_MAP.md` (validé par Collector) pour ne traiter que les sources valides
 
 Si `corpus/_index.json` est absent → exécuter `node papperpilot.js collect` via `runCommands`, puis relire l'index.
 
-## Workflow — quatre phases sans interruption
+## Workflow — cinq phases sans interruption
 
 ### Phase 1 — Inventaire
 
@@ -44,23 +44,46 @@ Pour **chaque** entrée de la liste, dans la même exécution :
 
 Dans tous les autres cas (papier faible, abstract manquant, section vide, doute mineur) → décision autonome et continuer.
 
-### Phase 3 — Consolidation (écriture des 3 fichiers)
+### Phase 3 — Classification taxonomique transverse
 
-6. Écrire `.plans/<slug>/evidence-matrix.json` avec l'objet `evidence` complet
-7. Écrire `.planning/analysis/ANALYSIS_MATRIX.md` — tableau synthétique dérivé (clé | objectifs | méthodes | résultats | conflits)
-8. Écrire `.planning/analysis/THEMES.md` — thèmes transverses émergents avec les sources associées
+Cette phase opère **après** la boucle d'extraction (toutes les sources sont en mémoire dans `evidence`) et **avant** l'écriture des fichiers de consolidation. Objectif : déduire un schéma de classification du corpus, le valider auprès de l'utilisateur, puis classer chaque source.
 
-### Phase 4 — Finalisation
+6. **Déduction des critères candidats** — analyser transversalement l'objet `evidence` pour identifier 4 à 6 axes qui discriminent réellement le corpus. Critères typiques (à adapter au corpus, **pas une checklist à appliquer aveuglément**) :
+   - Type de méthode (heuristique / ML supervisé / ML non supervisé / hybride / formel…)
+   - Type de contribution (théorique / empirique / outil / dataset / survey…)
+   - Domaine d'application (médical / sécurité / éducation / industriel…)
+   - Type de données / dataset (synthétique / réel / benchmark public / propriétaire…)
+   - Métrique d'évaluation principale (accuracy / F1 / latence / coût / utilisabilité…)
+   - Maturité (preuve de concept / prototype / déployé en production…)
+   - d'autres critères spécifiques au domaine (ex. pour la sécurité : type de menace, vecteur d'attaque, etc.) à déduire des papiers analysées, jamais inventés.
+   Pour chaque critère candidat, retenir uniquement ceux qui ont **au moins 2 valeurs distinctes** observées dans le corpus (sinon le critère ne discrimine rien).
 
-9. Mettre à jour `.planning/STATE.md` : `phase: analyze`, `status: done`
+7. **Validation utilisateur (Elicit court, obligatoire)** — via `vscode/askQuestions`, présenter en une seule question :
+   - La liste des 4-6 critères candidats avec leur libellé, leur rationnel (1 ligne), et les valeurs observées
+   - 4 options de réponse : (A) Garder tels quels / (B) Supprimer certains critères / (C) Renommer / fusionner / (D) Ajouter un critère manquant
+   Cette interaction est **la seule pause autorisée** entre Phase 2 et Phase 4 — la classer comme "décision éditoriale forte" justifiant l'interruption. Sans validation, ne pas écrire les fichiers.
 
-**Jamais de pause intermédiaire** : les 4 phases s'enchaînent dans un seul passage de l'agent. L'agent ne rend la main qu'après avoir écrit les 4 fichiers ci-dessus.
+8. **Remplissage de la matrice** — pour chaque source, attribuer une valeur sur chaque critère retenu (à partir des champs déjà extraits en Phase 2 : `methods`, `objectives`, `results`…). Si une valeur ne peut pas être déduite du texte → `null`, ne pas inventer.
+
+### Phase 4 — Consolidation (écriture des 4 fichiers)
+
+9. Écrire `.plans/<slug>/classification.json` — schéma des critères + valeurs par source (cf. section "Schéma JSON classification")
+10. Écrire `.plans/<slug>/evidence-matrix.json` avec l'objet `evidence` complet (chaque source inclut désormais le champ `classification`)
+11. Écrire `.planning/analysis/ANALYSIS_MATRIX.md` — tableau synthétique dérivé (clé | objectifs | méthodes | résultats | conflits)
+12. Écrire `.planning/analysis/THEMES.md` — thèmes transverses émergents avec les sources associées
+
+### Phase 5 — Finalisation
+
+13. Mettre à jour `.planning/STATE.md` : `phase: analyze`, `status: done`
+
+**Jamais de pause intermédiaire sauf l'Elicit de Phase 3** : les 5 phases s'enchaînent dans un seul passage de l'agent. L'agent ne rend la main qu'après avoir écrit les 5 fichiers ci-dessus.
 
 ## Sorties
 
 - `.planning/analysis/ANALYSIS_MATRIX.md` — tableau synthétique (clé | objectifs | méthodes | résultats | conflits)
 - `.planning/analysis/THEMES.md` — thèmes transverses émergents avec sources associées
-- `.plans/<slug>/evidence-matrix.json` — matrice JSON consolidée (clé → schéma ci-dessous)
+- `.plans/<slug>/evidence-matrix.json` — matrice JSON consolidée (clé → schéma ci-dessous, chaque entrée inclut `classification`)
+- `.plans/<slug>/classification.json` — schéma taxonomique du corpus (critères retenus + valeurs par source)
 
 Mettre à jour `.planning/STATE.md` : `phase: analyze`, `status: done`.
 
@@ -75,9 +98,40 @@ Mettre à jour `.planning/STATE.md` : `phase: analyze`, `status: done`.
   "limitations": ["string"],
   "bias": ["string"],
   "sampleSize": null,
-  "relevance": 0
+  "relevance": 0,
+  "classification": {
+    "<criterion_id>": "string|null"
+  }
 }
 ```
+
+Le champ `classification` reprend les `id` de critères définis dans `classification.json`. Valeur `null` si non déductible du texte. Ne pas inventer.
+
+## Schéma JSON classification
+
+`.plans/<slug>/classification.json` :
+
+```json
+{
+  "criteria": [
+    {
+      "id": "method_type",
+      "label": "Method type",
+      "rationale": "Discriminates heuristic vs ML vs hybrid approaches across the corpus",
+      "values": ["heuristic", "supervised_ml", "unsupervised_ml", "hybrid", "formal"]
+    }
+  ],
+  "validatedBy": "user",
+  "deducedAt": "ISO-8601 timestamp"
+}
+```
+
+Contraintes :
+- 4 à 6 critères maximum (au-delà, le tableau comparatif final devient illisible)
+- Chaque `id` en `snake_case`, ASCII, stable (réutilisé tel quel par StateOfArt)
+- `label` en anglais (cf. `output-language.instructions.md`)
+- `values` : énumération fermée des valeurs réellement observées dans le corpus + éventuellement `"other"` / `"unknown"`
+- `validatedBy` : `"user"` après Elicit, `"auto"` uniquement si l'utilisateur a accepté l'option (A) sans modification
 
 ## Contraintes strictes
 
@@ -94,6 +148,6 @@ Mettre à jour `.planning/STATE.md` : `phase: analyze`, `status: done`.
 **Écrire les fichiers immédiatement avec l'outil `write`, sans demander de confirmation.**
 Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir directement.
 
-**Minimiser les interruptions** : la boucle d'extraction traite les sources d'un seul élan. N'interrompre que pour les 3 cas listés en Phase 2 (erreur bloquante / ambiguïté de périmètre / conflit méthodologique majeur).
+**Minimiser les interruptions** : la boucle d'extraction traite les sources d'un seul élan. N'interrompre que pour les 3 cas listés en Phase 2 (erreur bloquante / ambiguïté de périmètre / conflit méthodologique majeur), plus l'Elicit obligatoire de Phase 3 (validation des critères de classification).
 
-**Ne jamais rendre la main avant d'avoir écrit les 4 fichiers** : `evidence-matrix.json` + `ANALYSIS_MATRIX.md` + `THEMES.md` + `STATE.md` mis à jour. Tant que ces 4 sorties ne sont pas sur disque, la phase est inachevée.
+**Ne jamais rendre la main avant d'avoir écrit les 5 fichiers** : `classification.json` + `evidence-matrix.json` + `ANALYSIS_MATRIX.md` + `THEMES.md` + `STATE.md` mis à jour. Tant que ces 5 sorties ne sont pas sur disque, la phase est inachevée.
