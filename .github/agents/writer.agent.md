@@ -6,6 +6,7 @@ instructions:
   - .github/instructions/academic-style.instructions.md
   - .github/instructions/bibtex-format.instructions.md
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
   - .github/instructions/pdf-export.instructions.md
 ---
@@ -106,3 +107,37 @@ Dans tous les autres cas (phrasé, micro-sources manquantes, doute sur une tourn
 Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir directement.
 
 **Minimiser les interruptions** : enchaîner toutes les sections en un seul élan, puis assembler `output/paper.md`. Ne s'arrêter que pour les cas listés dans "Interactions autorisées".
+
+## Mode SMS — structure de reporting Petersen
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md` (§ "Phase 3 — Reporting").
+
+### Structure obligatoire de `paper.md` (en plus de l'ordre fourni par OUTLINE)
+
+L'ordre des sections doit refléter le reporting Petersen 2015 (IMRaD adapté) :
+
+1. **Introduction** — motivation, need for the mapping, audience visée
+2. **Research questions** — liste explicite des RQ (numérotées RQ1, RQ2…) avec rationale
+3. **Research method** — sous-sections obligatoires :
+   - *Search strategy* (databases, PICO P+I keywords, dates) — rendre le tableau `Search strings per database` depuis `SEARCH_QUERIES.md`
+   - *Inclusion / exclusion criteria* — liste numérotée (IC1…, EC1…)
+   - *Search evaluation* — restituer la table de validation du test set (`SEARCH_QUERIES.md § Test set validation`)
+   - *Snowballing* (si appliqué) — seed set + critères Wohlin 2014
+   - *Data extraction & classification scheme* — décrire les 3 facettes Wieringa (`research_type`, `research_method`, `venue_type`) + critères topic-specific issus de `classification.json`
+4. **Results** — une sous-section par RQ ; **rendre obligatoirement** :
+   - Le tableau comparatif déjà présent dans `SOA.md` (réutiliser, ne pas refaire)
+   - **Au moins un bubble plot ou heatmap** + **un graphique de tendance temporelle** (références aux fichiers/images générés à partir du bloc `outline.json.synthesis.visualization` ; si non générés, les décrire en prose chiffrée à partir d'`evidence-matrix.json`)
+   - Synthèse quantitative : N par valeur de `research_type`, par année, par venue type
+5. **Discussion** — répondre nominativement à chaque RQ + identifier les **gaps** (cellules vides ou sous-représentées du tableau croisé)
+6. **Threats to validity** — réutiliser le contenu de `REVIEW_v1.md § Validity threats` (5 types : descriptive, theoretical, generalizability, interpretive, repeatability)
+7. **Conclusion & future work** — implications + agenda de recherche dérivé des gaps
+8. **References**
+
+### Contraintes additionnelles SMS
+
+- Chaque RQ formulée dans la section *Research questions* DOIT obtenir une réponse explicite (paragraphe nominatif "RQ1 — …") dans *Discussion*. Une RQ orpheline est un bloquant.
+- Toute valeur quantitative citée dans *Results* (« X% des études sont des solution proposals ») doit être recomputable depuis `evidence-matrix.json` + `classification.json`. Ne jamais inventer un pourcentage.
+- Les graphiques décrits dans `outline.json.synthesis.visualization` doivent **tous** apparaître dans *Results* (au minimum un bubble plot + un trend over time, conformément au mapping SMS).
+- Les contraintes de longueur min-max par section restent celles de `config.json.project.type` ; pour un SMS publié en revue, viser `survey` ou `paper`.

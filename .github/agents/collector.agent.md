@@ -4,6 +4,7 @@ description: 'Ingère les sources du corpus, pose des questions Elicit-style et 
 tools: ['read', 'write', 'edit', 'search/codebase', 'web/fetch', 'web/search', 'vscode/askQuestions', 'runCommands']
 instructions:
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
 ---
 
@@ -200,3 +201,42 @@ Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir dire
 **Ne jamais s'arrêter après avoir posé les questions Elicit** : les questions sont une étape interne du workflow, pas une fin de tâche. Phase 1 et Phase 2 doivent toujours produire les fichiers avant que Phase 3 pose des questions.
 
 **La Phase 2 (recherche API) est non négociable** : si aucun `web/fetch` n'a été appelé pour un gap, la collecte est incomplète — ré-exécuter la phase.
+
+## Mode SMS — obligations supplémentaires
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md`.
+
+### Search string PICO (P + I)
+
+En Phase 2, dériver le search string à partir des RQ via **PICO restreint à Population + Intervention** (C et O sur-restreignent). Identifier synonymes par dimension, combiner avec `AND`/`OR`, valider via 3–5 papiers connus.
+
+### Log des search strings par base
+
+Ajouter dans `SEARCH_QUERIES.md` une section `## Search strings per database` listant la chaîne exacte utilisée par source (la syntaxe Semantic Scholar / ArXiv / CrossRef diffère) :
+
+```markdown
+| Database | Search string | Date | Results | Notes |
+```
+
+### Test set de validation (Phase 3 Elicit obligatoire)
+
+Ajouter aux questions Elicit de Phase 3 : *"Liste 3 à 10 papiers qui DOIVENT être retrouvés si la recherche est correcte (format : clé — titre — DOI/arXiv)."*
+
+Croiser le test set contre `corpus/_merged.bib` post-collect et logger dans `SEARCH_QUERIES.md` :
+
+```markdown
+## Test set validation
+| Expected paper | Found in corpus? | Notes |
+```
+
+Si < 80% du test set est retrouvé → élargir les requêtes ou ajouter un seed snowball, ré-itérer Phase 2.
+
+### Snowball seeds (si Phase 2bis utilise snowballing)
+
+Critères Wohlin (2014) à logger explicitement dans `SEARCH_QUERIES.md` : ≥ 1 papier par cluster de recherche identifié dans `CORPUS_MAP.md`, auteurs/années/éditeurs variés, seed size minimum 5 (10+ pour sujets larges).
+
+### Inclusion/exclusion — règle SMS
+
+**Ne PAS exclure les solution proposals** — ils signalent les tendances émergentes. Critères d'exclusion par défaut : éditoriaux, summaries, non peer-reviewed, fulltext inaccessible, doublons. Logger dans `CORPUS_MAP.md` § "Sources invalides" avec la catégorie de raison.

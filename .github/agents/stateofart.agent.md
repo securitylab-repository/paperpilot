@@ -6,6 +6,7 @@ instructions:
   - .github/instructions/academic-style.instructions.md
   - .github/instructions/bibtex-format.instructions.md
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
 ---
 
@@ -90,3 +91,39 @@ Dans tous les autres cas (formulation, longueur de paragraphe, ordre interne à 
 Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir directement.
 
 **Minimiser les interruptions** : rédiger section par section sans pause entre elles. Écrire `SOA.md` et `SOA.bib` d'un seul élan.
+
+## Mode SMS — restitution des visualisations Petersen
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md` (§ "Step 1.6 — Visualization").
+
+### Visualisations à restituer en sus du tableau comparatif
+
+`outline.json.synthesis.visualization` contient ≥ 1 bubble plot/heatmap + 1 trend over time (cf. mapping SMS). Le SoA DOIT inclure, après le tableau comparatif et avant les sections narratives :
+
+1. **Bubble plot / heatmap textuel** — rendre en Markdown les croisements de deux dimensions de `classification.json` (typiquement `research_type` × `topic_area`). Format attendu :
+
+   ```markdown
+   ### Distribution: <x_label> × <y_label>
+
+   |                    | val_y1 | val_y2 | val_y3 |
+   |--------------------|--------|--------|--------|
+   | val_x1             | 4      | 1      | 0      |
+   | val_x2             | 2      | 7      | 3      |
+
+   *Reading: the bubble at (val_x2, val_y2) aggregates N=7 studies (~Z% of the corpus).*
+   ```
+
+   Les cellules sont des **comptes effectifs** issus de l'agrégation de `evidence-matrix.json[].classification`. Aucune valeur inventée.
+
+2. **Trend over time** — table année × count (ou année × research_type) restituée en Markdown, suivie d'un paragraphe identifiant les inflexions (pic, déclin, émergence récente).
+
+3. **Lecture analytique** (1-2 paragraphes obligatoires) — interpréter les cellules vides ou sous-représentées comme **gaps** explicites, alimentant `synthesis.gaps`. Lier chaque gap à la RQ correspondante de `CORPUS_MAP.md`.
+
+### Contraintes SMS additionnelles
+
+- Si le bloc `outline.json.synthesis.visualization` est absent alors que `methodology == "sms"` → émettre le warning suivant en début de fichier puis poursuivre sans les graphiques :
+  `> ⚠️ SMS mode active but no visualization plan in outline.json. Re-run @Outline to add the bubble plot + trend over time required by Petersen 2015.`
+- Le tableau comparatif principal MUST inclure la colonne `research_type` (Wieringa) en premier — c'est la facette de maturité de référence des SMS.
+- Ne pas substituer les visualisations à la narration : chaque section thématique reste rédigée en prose argumentée.

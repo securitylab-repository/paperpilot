@@ -5,6 +5,7 @@ tools: ['read', 'write', 'edit', 'search/codebase', 'web/fetch', 'runCommands', 
 instructions:
   - .github/instructions/pdf-conversion.instructions.md
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
 ---
 
@@ -151,3 +152,24 @@ Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir dire
 **Minimiser les interruptions** : la boucle d'extraction traite les sources d'un seul élan. N'interrompre que pour les 3 cas listés en Phase 2 (erreur bloquante / ambiguïté de périmètre / conflit méthodologique majeur), plus l'Elicit obligatoire de Phase 3 (validation des critères de classification).
 
 **Ne jamais rendre la main avant d'avoir écrit les 5 fichiers** : `classification.json` + `evidence-matrix.json` + `ANALYSIS_MATRIX.md` + `THEMES.md` + `STATE.md` mis à jour. Tant que ces 5 sorties ne sont pas sur disque, la phase est inachevée.
+
+## Mode SMS — bootstrap classification Wieringa
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md`.
+
+En **Phase 3 (Classification taxonomique transverse)**, la liste de critères candidats DOIT commencer par les 3 facettes Wieringa **avant** tout critère topic-specific déduit du corpus :
+
+1. **`research_type`** — `evaluation_research` (real-world industriel) / `validation_research` (lab/académique) / `solution_proposal` (sans évaluation) / `philosophical_paper` / `opinion_paper` / `experience_report`
+2. **`research_method`** — `survey` / `case_study` / `controlled_experiment` / `action_research` / `ethnography` / `simulation` / `prototyping` / `mathematical_analysis` / `other`
+3. **`venue_type`** — `journal` / `conference` / `workshop` / `book_chapter` / `thesis` / `trade_journal` / `other`
+
+Puis 1 à 3 critères topic-specific déduits du corpus (cap total : 6).
+
+L'Elicit de Phase 3 présente ces 3 facettes Wieringa **pré-cochées par défaut** + les critères topic-specific. Si l'utilisateur retire une facette Wieringa, logger `validatedBy: "user-override"` dans `classification.json` avec rationale.
+
+**Disambiguation Wieringa lors de l'extraction** :
+- Evaluation = contexte industriel réel (déployé, utilisé par praticiens)
+- Validation = contexte lab/académique (controlled experiment, case study étudiant, prototype)
+- Solution proposal = solution nouvelle, aucune évaluation empirique (peu importe la formulation)

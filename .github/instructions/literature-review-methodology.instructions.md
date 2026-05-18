@@ -59,17 +59,21 @@ Si `methodology` est absent ou vide → l'agent Collector **pose la question en 
 
 **Référence canonique** : Petersen, Vakkalanka, Kuzniarz (2015). *Guidelines for conducting systematic mapping studies in software engineering: An update*. Information and Software Technology, 64, 1-18.
 
+> **Opérationnalisation détaillée** : voir `skills/systematic-mapping-study/SKILL.md` (doctrine complète) et `.github/instructions/sms-methodology.instructions.md` (mapping agent-par-agent du pipeline PapperPilot). Les agents activent automatiquement cette instruction quand `config.json.project.methodology == "sms"`.
+
 ### Phases
 1. Définition des RQ (scope plus large qu'un SLR)
-2. Recherche
-3. Screening
+2. Recherche — **PICO restreint à P + I** (Population + Intervention) ; C et O sur-restreignent et sont à éviter
+3. Screening — inclusion/exclusion, **ne pas exclure les solution proposals** (signal de tendance)
 4. **Keywording** depuis les abstracts → schéma de classification
-5. Data extraction + mapping process
+5. Data extraction + classification (Wieringa : research type / method / venue) + mapping process
 
-### Artefacts attendus
-- `CLASSIFICATION_SCHEME.md` (facettes)
-- `BUBBLE_CHART.md` ou figure (distribution papiers par facette)
-- `GAP_ANALYSIS.md` (zones sous-étudiées)
+### Artefacts attendus dans PapperPilot
+- `CORPUS_MAP.md` + RQs (Collector)
+- `SEARCH_QUERIES.md` avec search strings par base + test set de validation (Collector)
+- `classification.json` avec facettes Wieringa pré-amorcées (Analyze)
+- `outline.json.synthesis.visualization` — bubble plot / heatmap / trend (Outline)
+- `REVIEW_v1.md` — rubric qualité (max 11) + checklist validity threats (Reviewer)
 
 ### Quand l'utiliser
 Champ émergent, peu mature, besoin de cartographier avant revue approfondie. Produit une **vue d'ensemble** plutôt qu'une synthèse fine.

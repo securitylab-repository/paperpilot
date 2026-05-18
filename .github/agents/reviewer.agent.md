@@ -6,6 +6,7 @@ instructions:
   - .github/instructions/academic-style.instructions.md
   - .github/instructions/bibtex-format.instructions.md
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
 ---
 
@@ -107,3 +108,46 @@ Dans tous les autres cas (problème clairement bloquant OU clairement cosmétiqu
 Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir directement.
 
 **Minimiser les interruptions** : parcourir tous les drafts, compléter la checklist, écrire `REVIEW_v1.md` et marquer `STATE.md` done sans pause intermédiaire.
+
+## Mode SMS — Quality rubric et validity threats
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md`.
+
+Ajouter **deux sections supplémentaires** à `REVIEW_v1.md` en plus du gabarit standard.
+
+### Section "SMS Quality Rubric" (max 11)
+
+```markdown
+## SMS Quality Rubric (Petersen et al. 2015)
+
+| Dimension | Max | Score | Evidence |
+|---|---|---|---|
+| Need for review | 2 | X | RQs + motivation documentés dans CORPUS_MAP.md ? Audience consultée ? |
+| Search strategy | 2 | X | Nombre de search types utilisés (database / manual / snowball) |
+| Search evaluation | 3 | X | Test set validé + pilote inclusion/exclusion + inter-rater agreement |
+| Extraction & classification | 3 | X | Wieringa research_type + research_method + venue_type appliqués ? Vérification 2e reviewer ? |
+| Validity discussion | 1 | X | Les 5 types de threats discutés ci-dessous |
+| **Total** | **11** | **X/11** | Quality ratio = X/11 (médiane littérature ≈ 33%) |
+```
+
+**Règles de verdict en mode SMS** :
+- Score < 4/11 (≈ 36%) → `RÉVISION MAJEURE` automatique
+- `PRÊT À SOUMETTRE` requiert ≥ 8/11
+
+### Section "Validity threats" (5 types)
+
+```markdown
+## Validity threats (Petersen & Gencel)
+
+| Threat type | Mitigations applied | Residual risk |
+|---|---|---|
+| Descriptive validity | (design extraction form, accuracy) | ... |
+| Theoretical validity | (sampling bias, missed studies, selection bias) | ... |
+| Generalizability | (internal: sub-areas / external: transfer to SLR) | ... |
+| Interpretive validity | (researcher bias drawing conclusions) | ... |
+| Repeatability | (process documentation quality) | ... |
+```
+
+Tout threat non documenté dans les drafts → finding **bloquant (❌)** dans la section "Annotations par section".

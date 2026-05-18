@@ -4,6 +4,7 @@ description: Clustering narratif de claims en sections thématiques avec consens
 tools: ['read', 'write', 'edit', 'search/codebase', 'web/fetch', 'runCommands', 'vscode/askQuestions']
 instructions:
   - .github/instructions/literature-review-methodology.instructions.md
+  - .github/instructions/sms-methodology.instructions.md
   - .github/instructions/output-language.instructions.md
 ---
 
@@ -84,3 +85,45 @@ Dans tous les autres cas (ordre mineur des sections, choix de titres, regroupeme
 Ne jamais proposer de "copier-coller" ni demander "veux-tu que je...". Agir directement.
 
 **Minimiser les interruptions** : enchaîner clustering → synthesis → écriture des 2 fichiers d'un seul élan. Ne s'arrêter que pour les cas listés dans "Interactions autorisées".
+
+## Mode SMS — spécification de visualisation
+
+Activer ce bloc uniquement si `.planning/config.json` field `project.methodology == "sms"`. Sinon ignorer.
+
+Référence opérationnelle : `.github/instructions/sms-methodology.instructions.md` + `skills/systematic-mapping-study/SKILL.md`.
+
+Étendre `outline.json` avec un bloc `visualization` à l'intérieur de `synthesis` :
+
+```json
+{
+  "synthesis": {
+    "consensus": ["..."],
+    "contradictions": ["..."],
+    "gaps": ["..."],
+    "visualization": [
+      {
+        "kind": "bubble_plot",
+        "x": "research_type",
+        "y": "<topic_specific_criterion_id>",
+        "rationale": "Show research-type maturity per topic to spot gaps"
+      },
+      {
+        "kind": "bar_plot",
+        "axis": "year",
+        "rationale": "Publication trend over time"
+      }
+    ]
+  }
+}
+```
+
+**Minimum requis en mode SMS** : 1 `bubble_plot` ou `heatmap` croisant 2 dimensions de `classification.json`, + 1 chart de tendance temporelle. Les `x` / `y` / `axis` doivent référencer des `id` de critères présents dans `classification.json`.
+
+Table de choix de visualisation (extraite du skill Petersen) :
+
+| Objectif | `kind` value |
+|---|---|
+| Count par catégorie unique | `bar_plot` ou `pie_chart` |
+| Distribution 2D | `bubble_plot` ou `heatmap` |
+| Tendances temporelles | `line_diagram` ou `bar_plot` |
+| Overlap entre catégories | `venn` |
